@@ -1,11 +1,11 @@
 package Pradeep.OOPS;
 
-public class encapsulationBank {
+public class EncapsulationBank {
     private long accNo;
     private String Name;
     private String pass;
 
-    encapsulationBank() {}
+    EncapsulationBank() {}
 
     public void setPass(String pass)
     {
@@ -38,9 +38,9 @@ public class encapsulationBank {
     }
 
     public static void main(String[] args) {
-        encapsulationBank b1 = new encapsulationBank();
-        encapsulationBank b2 = new encapsulationBank();
-        encapsulationBank b3 = new encapsulationBank();
+        EncapsulationBank b1 = new EncapsulationBank();
+        EncapsulationBank b2 = new EncapsulationBank();
+        EncapsulationBank b3 = new EncapsulationBank();
 
         b1.setAccNo(123);
         b1.setPass("abc123");
