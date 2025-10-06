@@ -1,4 +1,4 @@
-package Pradeep.OOPS;
+package Pradeep.OOPS.Encapsulation;
 
 public class EncapsulationBank {
     private long accNo;

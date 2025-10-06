@@ -1,4 +1,4 @@
-package Pradeep.Interface;
+package Pradeep.OOPS.Interface;
 
 interface Eating {
     void eat();

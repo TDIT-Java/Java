@@ -1,6 +1,4 @@
-package Pradeep.Abstraction;
-
-import java.io.*;
+package Pradeep.OOPS.Abstraction;
 
 abstract class B {
     abstract class C {

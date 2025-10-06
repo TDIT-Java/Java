@@ -1,4 +1,4 @@
-package Pradeep.Abstraction;
+package Pradeep.OOPS.Abstraction;
 
 abstract class A{
     A(){
