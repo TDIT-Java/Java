@@ -1,4 +1,4 @@
-package Pradeep.staticAncInstanceBlock.instanceBlock;
+package Pradeep.staticAndInstanceBlock.instanceBlock;
 
 public class InstanceBlock {
     static {
