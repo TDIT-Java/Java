@@ -1,4 +1,4 @@
-package Pradeep.Inheritance.SingleInheritance;
+package Pradeep.OOPS.Inheritance.SingleInheritance;
 
 public class ParentClass {
     static {

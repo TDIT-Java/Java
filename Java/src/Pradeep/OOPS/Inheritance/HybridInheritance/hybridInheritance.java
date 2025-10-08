@@ -1,4 +1,4 @@
-package Pradeep.Inheritance.HybridInheritance;
+package Pradeep.OOPS.Inheritance.HybridInheritance;
 
 class parent {
     void method1(){

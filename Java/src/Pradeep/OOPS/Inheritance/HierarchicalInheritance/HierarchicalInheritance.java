@@ -1,4 +1,4 @@
-package Pradeep.Inheritance.HierarchicalInheritance;
+package Pradeep.OOPS.Inheritance.HierarchicalInheritance;
 
 class ParentClass1 {
     static {

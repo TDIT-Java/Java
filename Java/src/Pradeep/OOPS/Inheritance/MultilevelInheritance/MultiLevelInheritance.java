@@ -1,4 +1,4 @@
-package Pradeep.Inheritance.MultilevelInheritance;
+package Pradeep.OOPS.Inheritance.MultilevelInheritance;
 
 public class MultiLevelInheritance {
     static {

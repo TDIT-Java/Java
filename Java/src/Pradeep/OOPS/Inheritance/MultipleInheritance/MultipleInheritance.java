@@ -1,4 +1,4 @@
-package Pradeep.Inheritance.MultipleInheritance;
+package Pradeep.OOPS.Inheritance.MultipleInheritance;
 
 class parent {
     void method()
