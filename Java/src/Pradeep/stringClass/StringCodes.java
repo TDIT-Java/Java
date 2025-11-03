@@ -32,14 +32,12 @@ public class StringCodes {
             }
         }
 
-
         System.out.println("Even ASCII Characters : ");
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) % 2 == 0) {
                 System.out.println(s.charAt(i));
             }
         }
-
 
         System.out.println("Odd ASCII Characters : ");
         for (int i = 0; i < s.length(); i++) {
