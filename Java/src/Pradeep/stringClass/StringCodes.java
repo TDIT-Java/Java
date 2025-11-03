@@ -17,6 +17,7 @@ public class StringCodes {
 
         System.out.println("Reversed String: " + reverse);
 
+
         System.out.println("Even Index : ");
         for (int i = 0; i < s.length(); i++) {
             if (i % 2 == 0) {
