@@ -25,7 +25,6 @@ public class StringCodes {
             }
         }
 
-
         System.out.println("Even Indexed Characters : ");
         for (int i = 0; i < s.length(); i++) {
             if (i % 2 == 0) {
