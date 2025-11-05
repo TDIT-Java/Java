@@ -12,6 +12,7 @@ public class StringClassExample {
         System.out.println("Character at index 1: " + str1.charAt(1));
         System.out.println("str1 equals() str4: " + str1.equals(str4));
         System.out.println("str1 == str4: " + str1 == str4);
+        System.out.println("hashCode(): " + str1.hashCode());
         System.out.println("str1 equalsIgnoreCase str5: " + str1.equalsIgnoreCase(str5));
         System.out.println("str1 compareTo str2: " + str1.compareTo(str2));
         System.out.println("Concatenation: " + str1.concat(" ").concat(str2));
@@ -58,6 +59,16 @@ public class StringClassExample {
         System.out.println("Formatted string: " + formatted);
         System.out.println("CompareToIgnoreCase: " + str1.compareToIgnoreCase(str5));
         System.out.println("SubSequence(1,4): " + str1.subSequence(1, 4));
+
+        // get the character (Unicode code point) at the given index
+        System.out.println("character (Unicode code point) at 1:  " + str1.codePointAt(1));
+
+        StringBuffer strbuf = new StringBuffer(str1);
+        System.out.println("contentEquals(): "+ str1.contentEquals("a"));
+
+        char[] strArray = {'I', 'm', 'p'};
+        String strArrayString = String.copyValueOf(strArray, 1,1);
+        System.out.println("String.copyValueOf(): " +strArrayString);
 
     }
 }

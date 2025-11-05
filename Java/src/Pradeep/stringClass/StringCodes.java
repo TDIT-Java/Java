@@ -1,5 +1,7 @@
 package Pradeep.stringClass;
 
+import java.util.Arrays;
+
 public class StringCodes {
     public static void main(String[] args) {
         String s = "Hello";
@@ -86,5 +88,51 @@ public class StringCodes {
             }
             System.out.print(s.charAt(i) + " :" + a[i] + "\t");
         }
+
+        String str1 = "w3resource";
+        char[] arr1 = str1.toCharArray();
+        String targetStr = "";
+        for (char value : arr1) {
+            if (targetStr.indexOf(value) == -1) {
+                targetStr += value;
+            }
+        }
+        System.out.println("after removing duplicates from str1: " + targetStr);
+
+        //program to find the first non-repeating character in a string.
+        String str2 = "gibblegabbler";
+        for (int i = 0; i < str2.length(); i++) {
+            boolean isUnique = true;
+            for (int j = 0; j < str2.length(); j++) {
+                if (i != j && str2.charAt(i) == str2.charAt(j)) {
+                    isUnique = false;
+                    break;
+                }
+            }
+            if (isUnique) {
+                System.out.println("First unique letter is : " + str2.charAt(i));
+                break;
+            }
+        }
+
+        // program to divide a string into n equal parts.
+        String str3 = "abcdefghijklmnopqrstuvwxy";
+        int n = 5;
+        int strSize = str3.length();
+        int partSize;
+
+        if (strSize % n != 0) {
+            System.out.println("The size of the given string can't devide by the: " + n);
+        } else {
+            System.out.println("Devided String: ");
+            partSize = strSize / n;
+            for (int i = 0; i < strSize; i++) {
+                if (i % partSize == 0)
+                    System.out.println();
+                System.out.print(str3.charAt(i));
+            }
+        }
+
+
     }
 }
