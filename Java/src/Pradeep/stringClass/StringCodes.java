@@ -1,6 +1,6 @@
 package Pradeep.stringClass;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class StringCodes {
     public static void main(String[] args) {
@@ -12,36 +12,47 @@ public class StringCodes {
             System.out.println(s.charAt(i));
         }
 
+        System.out.println("\n1st way of Reversing String: " + s);
         String reverse = "";
         for (int i = s.length() - 1; i >= 0; i--) {
             reverse = reverse + s.charAt(i);
         }
-
         System.out.println("Reversed String: " + reverse);
 
+        System.out.println("\n2nd way of Reversing String: " + s);
+        char[] strCharArray = s.toCharArray();
+        for (int i = strCharArray.length - 1; i >= 0; i--) {
+            System.out.print(strCharArray[i]);
+        }
 
-        System.out.println("Even Index : ");
+        System.out.println("\n\n3rd way of Reversing String: " + s);
+        for (int i = s.length() - 1; i >= 0; i--) {
+            System.out.print(s.charAt(i));
+        }
+
+
+        System.out.println("\n\nEven Index : ");
         for (int i = 0; i < s.length(); i++) {
             if (i % 2 == 0) {
                 System.out.println(i);
             }
         }
 
-        System.out.println("Even Indexed Characters : ");
+        System.out.println("\nEven Indexed Characters : ");
         for (int i = 0; i < s.length(); i++) {
             if (i % 2 == 0) {
                 System.out.println(s.charAt(i));
             }
         }
 
-        System.out.println("Even ASCII Characters : ");
+        System.out.println("\nEven ASCII Characters : ");
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) % 2 == 0) {
                 System.out.println(s.charAt(i));
             }
         }
 
-        System.out.println("Odd ASCII Characters : ");
+        System.out.println("\nOdd ASCII Characters : ");
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) % 2 != 0) {
                 System.out.println(s.charAt(i));
@@ -49,7 +60,7 @@ public class StringCodes {
         }
 
 
-        System.out.println("Removing H from Hello : ");
+        System.out.println("\nRemoving H from Hello : ");
         String s1 = "";
         char key = 'H';
         for (int i = 0; i < s.length(); i++) {
@@ -61,7 +72,7 @@ public class StringCodes {
         System.out.println("After Removing H from Hello : " + s1);
 
 
-        System.out.println("Check vowels in a String : ");
+        System.out.println("\nCheck vowels in a String : ");
         int count = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == 'a' || s.charAt(i) == 'A' || s.charAt(i) == 'e' || s.charAt(i) == 'E' || s.charAt(i) == 'i' || s.charAt(i) == 'I' || s.charAt(i) == 'o' || s.charAt(i) == 'O' || s.charAt(i) == 'u' || s.charAt(i) == 'U')
@@ -69,24 +80,35 @@ public class StringCodes {
         }
         System.out.println(count == 1 ? "True" : "False");
 
+        System.out.println("\nRepeated Strings using TreeMap: ");
+        Map<Character, Integer> map = new TreeMap<>();
 
-        System.out.println("Repeated Strings : ");
-        int a[] = new int[s.length()];
-
-        for (int i = 0; i < s.length(); i++) {
-            int count1 = 0;
-            for (int j = 1; j < s.length() - 1; j++) {
-                if (s.charAt(i) == s.charAt(j)) {
-                    count1 += 1;
-                }
-
-                if (count1 > 1) {
-                    a[i] += 1;
-                } else {
-                    a[i] = 1;
-                }
+        for (char ch : s.toCharArray()) {
+            if (map.containsKey(ch)) {
+                map.put(ch, map.get(ch) + 1);
+            } else {
+                map.put(ch, 1);
             }
-            System.out.print(s.charAt(i) + " :" + a[i] + "\t");
+        }
+
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            System.out.print(entry.getKey() + " :" + entry.getValue() + "\t");
+        }
+
+        System.out.println("\nRepeated Strings 2nd way: ");
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            int cnt = 0;
+
+            if (s.indexOf(ch) != i)
+                continue;
+
+            for (int j = 0; j < s.length(); j++) {
+                if (s.charAt(j) == ch)
+                    cnt++;
+            }
+
+            System.out.print(ch + " :" + cnt + "\t");
         }
 
         String str1 = "w3resource";
@@ -97,7 +119,7 @@ public class StringCodes {
                 targetStr += value;
             }
         }
-        System.out.println("after removing duplicates from str1: " + targetStr);
+        System.out.println("\n\nafter removing duplicates from str1: " + targetStr);
 
         //program to find the first non-repeating character in a string.
         String str2 = "gibblegabbler";
@@ -110,7 +132,7 @@ public class StringCodes {
                 }
             }
             if (isUnique) {
-                System.out.println("First unique letter is : " + str2.charAt(i));
+                System.out.println("\nFirst unique letter is : " + str2.charAt(i));
                 break;
             }
         }
@@ -122,9 +144,9 @@ public class StringCodes {
         int partSize;
 
         if (strSize % n != 0) {
-            System.out.println("The size of the given string can't devide by the: " + n);
+            System.out.println("\nThe size of the given string can't devide by the: " + n);
         } else {
-            System.out.println("Devided String: ");
+            System.out.println("\nDevided String: ");
             partSize = strSize / n;
             for (int i = 0; i < strSize; i++) {
                 if (i % partSize == 0)
@@ -132,7 +154,6 @@ public class StringCodes {
                 System.out.print(str3.charAt(i));
             }
         }
-
 
     }
 }
