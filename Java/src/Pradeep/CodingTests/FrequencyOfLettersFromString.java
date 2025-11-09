@@ -1,3 +1,5 @@
+package Pradeep.CodingTests;
+
 import java.util.*;
 
 public class FrequencyOfLettersFromString {

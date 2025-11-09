@@ -1,4 +1,6 @@
 // Program to reverse the number
+package Pradeep.CodingTests;
+
 public class ReverseTheNumber {
     public static void main(String[] args) {
         int num = 12345;

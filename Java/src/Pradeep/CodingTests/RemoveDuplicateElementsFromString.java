@@ -1,4 +1,6 @@
 // find duplicate chars from string and remove it str = "Programming"
+package Pradeep.CodingTests;
+
 public class RemoveDuplicateElementsFromString {
     public static void main(String[] args) {
         String str = "Programming";
