@@ -1,4 +1,4 @@
-package Pradeep.staticAndInstanceBlock.instanceBlock;
+package Pradeep.StaticAndInstanceBlock.instanceBlock;
 
 public class InstanceInheritance {
     int a = 10;

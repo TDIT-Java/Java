@@ -1,4 +1,4 @@
-package Pradeep.stringClass;
+package Pradeep.StringClass;
 
 import java.util.Map;
 import java.util.TreeMap;

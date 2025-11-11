@@ -1,4 +1,4 @@
-package Pradeep.stringClass;
+package Pradeep.StringClass;
 
 public class ReverseString {
     public static void main(String[] args) {
