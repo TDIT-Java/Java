@@ -1,5 +1,7 @@
 package Pradeep.StringClass;
 
+import jdk.nashorn.internal.ir.BinaryNode;
+
 public class StringClassMethods {
     public static void main(String[] args) {
         String str1 = "Hello";
@@ -69,6 +71,21 @@ public class StringClassMethods {
         char[] strArray = {'I', 'm', 'p'};
         String strArrayString = String.copyValueOf(strArray, 1,1);
         System.out.println("String.copyValueOf(): " +strArrayString);
+
+        String exm = "a,b,,c";
+        String[] str = exm.split(",");
+        System.out.println("length of str[] is " + str.length);
+        System.out.println("String after split()");
+        for(String s : str){
+            System.out.println(s);
+        }
+
+        String exm2 = "..p.q...r...";
+        String[] str6 = exm2.split("\\.");
+        System.out.println("length of str6[] is " + str6.length);
+        for(String s : str6) {
+            System.out.println(s);
+        }
 
     }
 }
