@@ -14,7 +14,7 @@ class AdditionExampleTest {
 
     @Test
     void sub() {
-        assertEquals(10, additionExample.sub(5, 5));
+        assertEquals(0, additionExample.sub(5, 5));
     }
 
     @Test

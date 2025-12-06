@@ -17,9 +17,8 @@ public class AdditionExample {
         try {
             return a / b;
         } catch (ArithmeticException e) {
-            System.out.println("Caught ArithmeticException" + e.getMessage());
+            throw new ArithmeticException("Division by zero");
         }
-        return 0;
     }
 
     public static void main(String[] args) {
