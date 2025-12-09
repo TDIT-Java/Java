@@ -1,7 +1,5 @@
 package Pradeep.ExceptionHandling;
 
-import java.io.FileNotFoundException;
-
 public class MultipleCatchBlocks {
     public static void main(String[] args) {
         try {
