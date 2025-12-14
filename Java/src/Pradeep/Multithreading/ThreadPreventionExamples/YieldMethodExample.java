@@ -1,4 +1,4 @@
-package Pradeep.Multithreading.ThreadPrevention;
+package Pradeep.Multithreading.ThreadPreventionExamples;
 
 class Mythread extends Thread {
     @Override
@@ -10,7 +10,7 @@ class Mythread extends Thread {
     }
 }
 
-public class YieldMethodExample {
+public class YieldMethodExample{
     public static void main(String[] args) {
         Mythread mythread = new Mythread();
         Thread.currentThread().setPriority(1); // if we set it to low or same then child thread will continue execution
