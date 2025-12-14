@@ -1,4 +1,4 @@
-package Pradeep.Multithreading.ThreadPrevention;
+package Pradeep.Multithreading.ThreadPreventionExamples;
 
 class Mythread1 extends Thread {
     @Override

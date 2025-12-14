@@ -8,17 +8,17 @@ class RuleSevenClass {
     }
 }
 
-public class RuleSeven extends  RuleFiveParent {
+public class RuleSeven extends RuleSevenClass {
 //    @Override // throws error
     private void RuleSevenClassMethod() {
         System.out.println("Private Method RuleSeven");
     }
 
     public static void main(String[] args) {
-        RuleFiveParent obj = new RuleSeven();
+        RuleSevenClass obj = new RuleSeven();
 //        obj.RuleSevenClassMethod(); // throws error
 
-        RuleFiveParent obj2 = new RuleFiveParent();
-//        obj2.RuleSevenClassMethod(); // throws error
+        RuleSeven obj2 = new RuleSeven();
+        obj2.RuleSevenClassMethod();
     }
 }
