@@ -4,7 +4,7 @@ class Display2 {
     String name;
     Display2 d;
 
-    public void Display2(String name, Display2 d) {
+    public void Display2(String name) {
         System.out.println("Outside Synchronized Block-1 and called by " + Thread.currentThread().getName());
         System.out.println("Outside Synchronized Block-2 and called by " + Thread.currentThread().getName());
         System.out.println("Outside Synchronized Block-3 and called by " + Thread.currentThread().getName());
@@ -38,7 +38,7 @@ class MyThread3 extends Thread {
 
     @Override
     public void run() {
-        d.Display2(name, d);
+        d.Display2(name);
     }
 }
 
