@@ -87,15 +87,10 @@ class CustomArrayList<S> {
     }
 
     public void clear() {
-        if (size == 0) {
-            throw new ZeroSizeException("Size is 0");
+        if (size > 0) {
+            elementData = new Object[INITIAL_SIZE];
+            size = 0;
         }
-
-        for (int i = 0; i < size; i++) {
-            elementData[i] = null;
-        }
-
-        size = 0;
     }
 }
 
@@ -120,7 +115,6 @@ public class FirstCustomArrayListStudent {
         list.clear();
 
         System.out.println("After removed all students");
-        System.out.println();
 
         list.display();
     }
