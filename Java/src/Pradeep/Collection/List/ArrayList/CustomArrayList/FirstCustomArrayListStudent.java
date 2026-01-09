@@ -12,7 +12,7 @@ class Student {
     }
 
     public String toString() {
-        return "Student [ Student Name: " + studentName + " Roll No: " + studentRollNo + "]";
+        return "Student Name: " + studentName + ", " + " Roll No: " + studentRollNo + "\n";
     }
 }
 
@@ -46,8 +46,8 @@ class CustomArrayList<S> {
             throw new ZeroSizeException("Size is 0");
         }
 
-        for (int i = 0; i < size; i++ ) {
-            if (((Student)elementData[i]).studentRollNo == (element)) {
+        for (int i = 0; i < size; i++) {
+            if (((Student) elementData[i]).studentRollNo == (element)) {
                 return true;
             }
         }
@@ -74,23 +74,26 @@ class CustomArrayList<S> {
         elementData = Arrays.copyOf(elementData, newSize);
     }
 
-    public void display() {
-        System.out.println("All Students List: ");
-        if (size <= 0) {
-            System.out.println("Empty List 0");
-            return;
-        }
-
-        for (int i = 0; i < size; i++) {
-            System.out.print(elementData[i] + " ");
-        }
-    }
-
     public void clear() {
         if (size > 0) {
             elementData = new Object[INITIAL_SIZE];
             size = 0;
         }
+    }
+
+    public Boolean isEmpty() {
+        return size == 0 ? true : false;
+    }
+
+    @Override
+    public String toString() {
+        if (size == 0)
+            return "[]";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+            sb.append(elementData[i] + " ");
+        }
+        return sb.toString();
     }
 }
 
@@ -101,7 +104,7 @@ public class FirstCustomArrayListStudent {
         list.add(new Student(1, "XZY"));
         list.add(new Student(2, "PQR"));
 
-        list.display();
+        System.out.println(list);
 
         System.out.println("\nStudent at index " + 1 + " = " + list.getElementAt(1));
         System.out.println("\nIs Id 1 Student Present: " + list.isId(1));
@@ -109,13 +112,18 @@ public class FirstCustomArrayListStudent {
         System.out.println("Student removed from index " + 1 + " = " + list.remove(1));
 
         System.out.println("\nDisplay Students list again after removal at index 1");
-        list.display();
+
+        System.out.println(list);
+
+        System.out.println("\nIs Students list empty: " + list.isEmpty());
 
         System.out.println("\nClearing all Students list");
         list.clear();
 
         System.out.println("After removed all students");
 
-        list.display();
+        System.out.println("\nIs Students list empty: " + list.isEmpty());
+
+        System.out.println(list);
     }
 }
