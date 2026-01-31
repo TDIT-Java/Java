@@ -22,6 +22,10 @@
 
         <property name="cache.use_second_level_cache">true</property>
         <property name="cache.region.factory_class">jcache</property>
+        <property name="hibernate.javax.cache.uri">classpath:redisson.yaml</property>
+        <property name="hibernate.javax.cache.uri">redisson.yaml</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+
         <mapping class="org.example.Student"/>
         <mapping class="org.example.Address"/>
         <mapping class="org.Mapping.Question"/>
