@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c61a77b3-c2f6-4b7a-b850-78a4db6a70df" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/Dao/PersonDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/Model/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/Service/ReportService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/util/DatabaseConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/resources/reports/person_report.jrxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Java/src/Pradeep/StringClass/Example.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/DAO/RowMapperImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/DAO/StudentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/DAO/StudentDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/Entity/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/JdbcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringOrm/Dao/StudentDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringOrm/Entities/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringOrm/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/resources/SpringJDBCConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/resources/SpringOrmConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springmvc/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/about.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/help.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spring/SpringCore/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Spring/SpringCore/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Spring/SpringCore/src/main/resources/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/resources/config.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "pradeepparit"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TDIT-Java/Java.git",
+    "accountId": "5cebe263-e621-45fd-b282-5a506ba2850f"
+  }
+}]]></component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="3AKb0l8Tm3WIpL8P2gG5jeDupu5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Smart Tomcat.Tomcat Server.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\TDIT\Java\Github Collaboration\Java\SpringMVC\src\main\webapp\WEB-INF\views" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat Server" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="catalinaBase" value="C:\Users\prade\.SmartTomcat\SpringMVC\SpringMVC" />
+      <option name="contextPath" value="/SpringMVC" />
+      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="envOptions">
+        <map />
+      </option>
+      <option name="extraClassPath" value="" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/9.0.115" />
+          <option name="path" value="$PROJECT_DIR$/../../../apache-tomcat-9.0.115-windows-x64/apache-tomcat-9.0.115" />
+          <option name="version" value="9.0.115.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
+      <module name="SpringMVC" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c61a77b3-c2f6-4b7a-b850-78a4db6a70df" name="Changes" comment="" />
+      <created>1772343990517</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772343990517</updated>
+    </task>
+    <servers />
+  </component>
+</project>
