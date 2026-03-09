@@ -1,8 +1,12 @@
 package springmvc.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
@@ -27,13 +31,13 @@ public class HomeController {
     }
 
     @RequestMapping("/about")
-    public String about(){
+    public String about() {
         System.out.println("This is about url");
         return "about";
     }
 
     @RequestMapping("/help")
-    public ModelAndView help(){
+    public ModelAndView help() {
         System.out.println("This is help url");
         ModelAndView model = new ModelAndView();
         model.addObject("name", "Pradeep");
@@ -44,6 +48,20 @@ public class HomeController {
         model.setViewName("help");
 
         return model;
+    }
+
+    @RequestMapping("/user/{id}")
+    public String getUserId(@PathVariable("id") int id) {
+        System.out.println("Id is " + id);
+        return "index";
+    }
+
+    @RequestMapping("/exceptionalController")
+    public String exceptionalController() {
+        System.out.println("exceptional url fired");
+        String msg = null;
+        System.out.println(msg.length());
+        return "index";
     }
 
 }

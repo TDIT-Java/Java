@@ -1,0 +1,44 @@
+// Test 1 - Search by keyword
+{
+  "keyword": "harry",
+  "page": 0,
+  "size": 10
+}
+
+// Test 2 - Price range filter
+{
+  "minPrice": 200,
+  "maxPrice": 400,
+  "page": 0,
+  "size": 10
+}
+
+// Test 3 - Category filter
+{
+  "category": "Science",
+  "page": 0,
+  "size": 10
+}
+
+// Test 4 - Multiple filters together
+{
+  "keyword": "harry",
+  "minPrice": 100,
+  "maxPrice": 500,
+  "category": "Fiction",
+  "minRating": 4.0,
+  "inStock": true,
+  "sortBy": "price",
+  "sortDirection": "asc",
+  "page": 0,
+  "size": 10
+}
+
+// Test 5 - Sort by rating descending
+{
+  "inStock": true,
+  "sortBy": "rating",
+  "sortDirection": "desc",
+  "page": 0,
+  "size": 5
+}

@@ -5,43 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c61a77b3-c2f6-4b7a-b850-78a4db6a70df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/Dao/PersonDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/Model/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/Service/ReportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/java/org/Java/util/DatabaseConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JasperReportExample/src/main/resources/reports/person_report.jrxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Java/src/Pradeep/StringClass/Example.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/DAO/RowMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/DAO/StudentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/DAO/StudentDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/Entity/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/JdbcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringJDBC/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringOrm/Dao/StudentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringOrm/Entities/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/java/org/SpringOrm/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/resources/SpringJDBCConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/resources/SpringOrmConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/springmvc/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/about.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/help.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JDBCExample/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JDBCExample/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../JDBCExample/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springmvc/controller/ContactController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springmvc/controller/FileUploadController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springmvc/controller/GeneralExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springmvc/controller/ReController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springmvc/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springmvc/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/springmvc/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/contact.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/exp.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/fileForm.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/success.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Spring/SpringCore/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Spring/SpringCore/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Spring/SpringCore/src/main/resources/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Spring/SpringCore/src/main/resources/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springmvc/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springmvc/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/help.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/help.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +88,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="springmvc.model" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\TDIT\Java\Github Collaboration\Java\SpringMVC\src\main\webapp\WEB-INF\views" />
     </key>
