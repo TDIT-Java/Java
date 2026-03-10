@@ -1,0 +1,34 @@
+Flow of Filters =>
+----------------------------------------------------------------------
+	Request comes with filters
+        	↓
+	buildFilters() called
+	        ↓
+	Each method checks if value is null
+	        ↓
+	null    → return null → condition SKIPPED
+	not null → return cb.xxx() → condition ADDED
+        	↓
+	All conditions joined with AND
+	        ↓
+	Final SQL generated and executed
+
+=========================================================================================================================
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
