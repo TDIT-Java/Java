@@ -46,7 +46,7 @@ public class BookFilterValidation {
             throw new InvalidFilterException("Page number cannot be negative");
         }
         if (filter.getSize() <= 0) {
-            log.error("Size cannot be negative");
+            log.error("Size cannot be negative and not equals to zero");
             throw new InvalidFilterException("Page size must be greater than 0");
         }
 

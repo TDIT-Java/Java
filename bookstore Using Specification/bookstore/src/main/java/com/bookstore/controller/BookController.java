@@ -25,6 +25,11 @@ public class BookController {
     public ResponseEntity<BookResponse> filterBooks(@RequestBody BookFilterRequest filter) {
         bookFilterValidation.validate(filter);
         BookResponse books = bookService.getFilteredBooks(filter);
+
+        if (books.getBooks().isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
         return ResponseEntity.ok(books);
     }
 
