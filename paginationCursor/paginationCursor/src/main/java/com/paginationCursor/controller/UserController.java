@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,6 +31,12 @@ public class UserController {
     ) {
         validate.validateUrlData(cursor, limit);
         Map<String, Object> response = userService.getUsers(cursor, limit);
+
+
+        if (response.containsKey("cursor") && response.get("cursor") == null) {
+            return ResponseEntity.noContent().build();
+        }
+
         return ResponseEntity.ok(response);
     }
 }

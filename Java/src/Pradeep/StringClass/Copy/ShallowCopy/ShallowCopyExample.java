@@ -41,14 +41,16 @@ public class ShallowCopyExample {
         try {
             Bike copiedBike = (Bike) bike.clone();
 
-            System.out.println("Original bike: " + bike);
-            System.out.println("Copied bike: " + copiedBike);
+            System.out.println("Original bike: " + bike); // Activa BMW
+            System.out.println("Copied bike: " + copiedBike); // Activa BMW
 
             copiedBike.car.name = "Tata";
 
             System.out.println("\nAfter modifying car name:");
-            System.out.println("After change car name original car: " + car);
-            System.out.println("After change car name: " + copiedBike);
+            System.out.println("After change car name original car: " + car); // TATA
+            System.out.println("After change car name: " + copiedBike); // Activa BMW->TATA
+            System.out.println("After change original bike : " + bike); // Activa BMW->TATA
+
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }

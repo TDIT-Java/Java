@@ -27,7 +27,9 @@ public class BookController {
         BookResponse books = bookService.getFilteredBooks(filter);
 
         if (books.getBooks().isEmpty()) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();        if (books.getBooks().isEmpty()) {
+                return ResponseEntity.notFound().build();
+            }
         }
 
         return ResponseEntity.ok(books);
