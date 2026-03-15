@@ -10,7 +10,7 @@ public class BookSpecification {
 
     // Main method - combines all filters
     public static Specification<Book> buildFilters(BookFilterRequest filter) {
-        // This generates SQL like :
+        // This generates queries like :
         // WHERE keyword AND price_range AND category AND rating AND inStock
         // But if any method returns null that condition is Skipped auto.
         log.info("Book Filter Request: {}", filter);

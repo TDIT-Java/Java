@@ -34,7 +34,7 @@ public class BookService {
         // Step 3 - Build pageable
         Pageable pageable = PageRequest.of(filter.getPage(), filter.getSize(), sort);
 
-        // Step 4 - Query database and get only Content and store List of Books
+        // Step 4 - Query database and get only Content
         Page<Book> page = bookRepository.findAll(spec, pageable);
 
         BookResponse response = new BookResponse();

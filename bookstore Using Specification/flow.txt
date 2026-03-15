@@ -7,7 +7,7 @@ Flow of Filters =>
 	Each method checks if value is null
 	        ↓
 	null    → return null → condition SKIPPED
-	not null → return cb.xxx() → condition ADDED
+	not null → return cb.XYZ() → condition ADDED
         	↓
 	All conditions joined with AND
 	        ↓

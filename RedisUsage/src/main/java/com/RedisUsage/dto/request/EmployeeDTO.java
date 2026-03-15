@@ -1,13 +1,15 @@
-package com.RedisUsage.dto;
+package com.RedisUsage.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDTO {
+public class EmployeeDTO implements Serializable {
     private String name;
     private String email;
     private String phoneNumber;
