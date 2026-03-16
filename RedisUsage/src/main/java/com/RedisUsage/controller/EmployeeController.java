@@ -33,4 +33,27 @@ public class EmployeeController {
 
         return ResponseUtil.success(HttpStatus.OK, emp, "Employee Get Successfully");
     }
+
+    @PutMapping("/updateEmployee")
+    public ResponseEntity<ApiResponse<EmployeeResponseDTO>> updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        EmployeeResponseDTO emp = employeeService.updateEmployeeById(employeeDTO);
+
+        if (emp == null) {
+            return ResponseUtil.error(HttpStatus.NOT_FOUND, "Employee Not Found with user ID " + employeeDTO.getId());
+        }
+
+        return ResponseUtil.success(HttpStatus.OK, emp, "Employee Updated Successfully");
+    }
+
+    @DeleteMapping("/deleteEmployee/{id}")
+    public ResponseEntity<ApiResponse<EmployeeResponseDTO>> deleteEmployee(@PathVariable @Valid Integer id) {
+
+        EmployeeResponseDTO emp = employeeService.deleteEmployeeById(id);
+
+        if (emp == null) {
+            return ResponseUtil.error(HttpStatus.NOT_FOUND, "Employee Not Found with user ID " + id);
+        }
+
+        return ResponseUtil.success(HttpStatus.OK, emp, "Employee Deleted Successfully");
+    }
 }

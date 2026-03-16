@@ -10,9 +10,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployeeDTO implements Serializable {
+    private Integer id;
     private String name;
     private String email;
     private String phoneNumber;
     private String address;
-    private double salary;
+    private Double salary;
 }
