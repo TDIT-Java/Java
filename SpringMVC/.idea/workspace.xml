@@ -5,27 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c61a77b3-c2f6-4b7a-b850-78a4db6a70df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/PaginationCursorApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/dto/UserResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/exceptions/InvalidCursorException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/exceptions/InvalidLimitException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/java/com/paginationCursor/validations/Validate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../paginationCursor/paginationCursor/src/test/java/com/paginationCursor/PaginationCursorApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/controller/BillController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/dto/PastBillRow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/dto/PendingBillRow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/dto/request/BillReportRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/dto/response/BillReportData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/entity/Bill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/entity/Connection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/entity/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/entity/MeterReading.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/exceptions/BillNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/repository/BillRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/service/BillReportService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/java/com/ReportsService/service/BillService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/resources/lightBill.jrxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ReportsService/src/main/resources/reports/electricity_bill.jrxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bookstore Using Specification/bookstore/src/test/java/com/bookstore/service/BookServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bookstore Using Specification/bookstore/src/test/java/com/bookstore/validation/BookFilterValidationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hibernate/com.FirstHibernateProject/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Hibernate/com.FirstHibernateProject/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReportsService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ReportsService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ReportsService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../ReportsService/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bookstore Using Specification/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bookstore Using Specification/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bookstore Using Specification/bookstore/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bookstore Using Specification/bookstore/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,22 +75,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Smart Tomcat.Tomcat Server.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.Tomcat Server.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="springmvc.model" />
