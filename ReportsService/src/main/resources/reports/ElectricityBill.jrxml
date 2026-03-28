@@ -662,8 +662,14 @@
                 </graphicElement>
             </line>
 
+            <!-- Advertisement  -->
+            <image scaleImage="RetainShape" hAlign="Left" vAlign="Middle">
+                <reportElement x="0" y="547" width="555" height="100"/>
+                <imageExpression><![CDATA["advertisement.png"]]></imageExpression>
+            </image>
+
             <staticText>
-                <reportElement x="0" y="547" width="555" height="16" forecolor="#888888"/>
+                <reportElement x="0" y="560" width="555" height="16" forecolor="#888888"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="8" isItalic="true" fontName="SansSerif"/>
                 </textElement>

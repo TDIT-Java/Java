@@ -42,9 +42,7 @@ public class JasperReportHelper {
             JasperReport jasperReport =
                     JasperCompileManager.compileReport(reportStream);
 
-            // ===============================
-            // ✅ CONVERT LIST → ARRAYS (IMPORTANT)
-            // ===============================
+            // CONVERT LIST → ARRAYS (IMPORTANT)
             List<String> pendingMonths = new java.util.ArrayList<>();
             List<Integer> pendingUnits = new java.util.ArrayList<>();
             List<Double> pendingAmounts = new java.util.ArrayList<>();
@@ -65,7 +63,7 @@ public class JasperReportHelper {
                 pastAmounts.add(row.getBillPaid());
             }
 
-            // ✅ Generate QR image
+            // Generate QR image
             // QR SAFE
             String qrText = (String) fields.get("qrData");
 
@@ -90,9 +88,7 @@ public class JasperReportHelper {
                 pendingAmounts.add(row.getAmount());
             }
 
-            // ===============================
-            // ✅ PARAMETERS MAP
-            // ===============================
+            // PARAMETERS MAP
             Map<String, Object> parameters = new HashMap<>(fields);
 
             parameters.put("pendingMonths", pendingMonths);
@@ -103,9 +99,7 @@ public class JasperReportHelper {
             parameters.put("pastUnits", pastUnits);
             parameters.put("pastAmounts", pastAmounts);
 
-            // ===============================
-            // ✅ FILL REPORT
-            // ===============================
+            // FILL REPORT
             JasperPrint jasperPrint = JasperFillManager.fillReport(
                     jasperReport,
                     parameters,

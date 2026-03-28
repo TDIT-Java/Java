@@ -25,7 +25,7 @@ public class BillReportServiceImpl implements BillReportService {
 
     private final ConsumerRepository consumerRepository;
     private final BillRepository billRepository;
-    private final MeterReadingRepository meterReadingRepository; // ✅ Added
+    private final MeterReadingRepository meterReadingRepository;
     private final JasperReportHelper jasperReportHelper;
 
     @Override
@@ -35,7 +35,7 @@ public class BillReportServiceImpl implements BillReportService {
         log.info("Generating bill report → ConsumerID: {}, Month: {}, Year: {}",
                 request.getId(), request.getMonth(), request.getYear());
 
-        // ✅ Convert String month to BillMonth enum
+        // Convert String month to BillMonth enum
         BillMonth billMonth = BillMonth.valueOf(request.getMonth().toUpperCase());
 
         // 1. Fetch Consumer
@@ -49,8 +49,7 @@ public class BillReportServiceImpl implements BillReportService {
                 .orElseThrow(() -> new BillNotFoundException(
                         consumer.getId(), request.getMonth(), request.getYear()));
 
-        // ✅ 3. Ensure MeterReading is loaded (Fetch Join might return proxy if lazy)
-        // If you need specific calculation from MeterReading that isn't in Bill snapshot:
+        // 3. Ensure MeterReading is loaded
         MeterReading reading = currentBill.getMeterReading();
         if (reading == null) {
             // Fallback: Try to find reading directly if link was broken
@@ -94,16 +93,14 @@ public class BillReportServiceImpl implements BillReportService {
                 .build();
     }
 
-    // ─────────────────────────────────────────────────────────
     // PRIVATE HELPERS
-    // ─────────────────────────────────────────────────────────
 
     private Map<String, Object> buildFieldsMap(Consumer consumer, Bill bill, MeterReading reading) {
 
         Address address = consumer.getAddress();
         City city = address.getCity();
 
-        // ✅ Calculate Units Consumed dynamically from Reading if available
+        // Calculate Units Consumed dynamically from Reading if available
         // Otherwise fallback to Bill snapshot
         int unitsConsumedVal = 0;
         if (reading != null && reading.getCurrentReading() != null && reading.getPreviousReading() != null) {
@@ -139,7 +136,7 @@ public class BillReportServiceImpl implements BillReportService {
         fields.put("billDate", bill.getBillDate().toString());
         fields.put("dueDate", bill.getDueDate().toString());
 
-        // ✅ Use Reading Date if available
+        // Use Reading Date if available
         String readingDateStr = "N/A";
         if (reading != null && reading.getReadingDate() != null) {
             readingDateStr = reading.getReadingDate().toString();
@@ -151,7 +148,7 @@ public class BillReportServiceImpl implements BillReportService {
         fields.put("billGeneratedDate", bill.getCreatedAt() != null
                 ? bill.getCreatedAt().toLocalDate().toString() : bill.getBillDate().toString());
 
-        // ✅ Use calculated values
+        // Use calculated values
         int currRead = (reading != null && reading.getCurrentReading() != null)
                 ? reading.getCurrentReading().intValue()
                 : (bill.getCurrentReading() != null ? bill.getCurrentReading().intValue() : 0);

@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public interface BillRepository extends JpaRepository<Bill, Long> {
 
-    // ✅ Fetches Bill + MeterReading in one go
+    // Fetches Bill + MeterReading in one go
     @Query("""
                 SELECT b FROM Bill b
                 LEFT JOIN FETCH b.meterReading

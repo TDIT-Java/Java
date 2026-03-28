@@ -11,8 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface MeterReadingRepository extends JpaRepository<MeterReading, Long> {
-
-    // ✅ FIX: Parameter type changed from String to BillMonth to match Entity
     @Query("""
         SELECT mr FROM MeterReading mr
         WHERE mr.connection.consumer.id = :consumerId
@@ -22,7 +20,7 @@ public interface MeterReadingRepository extends JpaRepository<MeterReading, Long
     """)
     Optional<MeterReading> findByConsumerIdAndBillingMonth(
             @Param("consumerId") Long consumerId,
-            @Param("billingMonth") BillMonth billingMonth,  // Changed to Enum
-            @Param("billingYear") Integer billingYear       // Added Year param
+            @Param("billingMonth") BillMonth billingMonth,
+            @Param("billingYear") Integer billingYear
     );
 }
