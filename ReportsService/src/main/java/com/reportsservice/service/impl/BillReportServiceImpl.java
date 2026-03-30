@@ -61,24 +61,23 @@ public class BillReportServiceImpl implements BillReportService {
         // 4. Fetch Pending Bills
         List<Bill> pendingBills = billRepository.findPendingBills(
                 consumer.getId(),
-                List.of(PaymentStatus.PENDING, PaymentStatus.PARTIALLY_PAID, PaymentStatus.OVERDUE),
-                billMonth, request.getYear());
+                List.of(PaymentStatus.PENDING, PaymentStatus.PARTIALLY_PAID, PaymentStatus.OVERDUE));
 
         // 5. Fetch Past Paid Bills
-        List<Bill> pastBills = billRepository.findPastPaidBills(
+        List<Bill> paidBills = billRepository.findPastPaidBills(
                 consumer.getId(),
-                PaymentStatus.PAID,
-                billMonth, request.getYear());
+                PaymentStatus.PAID
+        );
 
         // 6. Build Jasper Fields
         Map<String, Object> fields = buildFieldsMap(consumer, currentBill, reading);
 
         // 7. Build Table Rows
         List<PendingBillRow> pendingRows = buildPendingRows(pendingBills);
-        List<PastBillRow> pastRows = buildPastRows(pastBills);
+        List<PastBillRow> paidRows = buildPastRows(paidBills);
 
         // 8. Generate PDF
-        byte[] pdfBytes = jasperReportHelper.generateBillPdf(fields, pendingRows, pastRows);
+        byte[] pdfBytes = jasperReportHelper.generateBillPdf(fields, pendingRows, paidRows);
 
         String fileName = "BILL_" + consumer.getConsumerNo() + "_"
                 + billMonth.name() + "_" + request.getYear() + ".pdf";
@@ -188,6 +187,7 @@ public class BillReportServiceImpl implements BillReportService {
                     .month(b.getBillingMonth().name() + "-" + b.getBillingYear())
                     .units(b.getUnitsConsumed() != null ? b.getUnitsConsumed() : 0)
                     .billPaid(b.getAmountPaid() != null ? b.getAmountPaid().doubleValue() : 0.0)
+                    .paidDateTime(b.getBillPaidDateTime())
                     .build());
         }
         return rows;

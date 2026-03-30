@@ -4,16 +4,15 @@ import com.reportsservice.dto.response.PastBillRow;
 import com.reportsservice.dto.response.PendingBillRow;
 import com.reportsservice.exceptions.ReportGenerationException;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import net.glxn.qrgen.javase.QRCode;
 
@@ -27,7 +26,7 @@ public class JasperReportHelper {
     public byte[] generateBillPdf(
             Map<String, Object> fields,
             List<PendingBillRow> pendingBills,
-            List<PastBillRow> pastBills) {
+            List<PastBillRow> paidBills) {
 
         try {
             ClassPathResource resource = new ClassPathResource(REPORT_PATH);
@@ -43,9 +42,9 @@ public class JasperReportHelper {
                     JasperCompileManager.compileReport(reportStream);
 
             // CONVERT LIST → ARRAYS (IMPORTANT)
-            List<String> pendingMonths = new java.util.ArrayList<>();
-            List<Integer> pendingUnits = new java.util.ArrayList<>();
-            List<Double> pendingAmounts = new java.util.ArrayList<>();
+            List<String> pendingMonths = new ArrayList<>();
+            List<Integer> pendingUnits = new ArrayList<>();
+            List<Double> pendingAmounts = new ArrayList<>();
 
             for (PendingBillRow row : pendingBills) {
                 pendingMonths.add(row.getMonth());
@@ -53,14 +52,16 @@ public class JasperReportHelper {
                 pendingAmounts.add(row.getAmount());
             }
 
-            List<String> pastMonths = new java.util.ArrayList<>();
-            List<Integer> pastUnits = new java.util.ArrayList<>();
-            List<Double> pastAmounts = new java.util.ArrayList<>();
+            List<String> paidMonths = new ArrayList<>();
+            List<Integer> paidUnits = new ArrayList<>();
+            List<Double> paidAmounts = new ArrayList<>();
+            List<LocalDateTime> billPaidDateTimes = new ArrayList<>();
 
-            for (PastBillRow row : pastBills) {
-                pastMonths.add(row.getMonth());
-                pastUnits.add(row.getUnits());
-                pastAmounts.add(row.getBillPaid());
+            for (PastBillRow row : paidBills) {
+                paidMonths.add(row.getMonth());
+                paidUnits.add(row.getUnits());
+                paidAmounts.add(row.getBillPaid());
+                billPaidDateTimes.add(row.getPaidDateTime());
             }
 
             // Generate QR image
@@ -79,15 +80,6 @@ public class JasperReportHelper {
 
             fields.put("qrImage", qrImage);
 
-            // LIMIT LIST SIZE
-            int limit = Math.min(pendingBills.size(), 5);
-            for (int i = 0; i < limit; i++) {
-                PendingBillRow row = pendingBills.get(i);
-                pendingMonths.add(row.getMonth());
-                pendingUnits.add(row.getUnits());
-                pendingAmounts.add(row.getAmount());
-            }
-
             // PARAMETERS MAP
             Map<String, Object> parameters = new HashMap<>(fields);
 
@@ -95,9 +87,10 @@ public class JasperReportHelper {
             parameters.put("pendingUnits", pendingUnits);
             parameters.put("pendingAmounts", pendingAmounts);
 
-            parameters.put("pastMonths", pastMonths);
-            parameters.put("pastUnits", pastUnits);
-            parameters.put("pastAmounts", pastAmounts);
+            parameters.put("pastMonths", paidMonths);
+            parameters.put("pastUnits", paidUnits);
+            parameters.put("pastAmounts", paidAmounts);
+            parameters.put("billPaidDateTime", billPaidDateTimes);
 
             // FILL REPORT
             JasperPrint jasperPrint = JasperFillManager.fillReport(

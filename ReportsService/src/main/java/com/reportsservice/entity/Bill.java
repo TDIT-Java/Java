@@ -5,6 +5,8 @@ import com.reportsservice.enums.BillStatus;
 import com.reportsservice.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -39,7 +41,8 @@ public class Bill {
     private String billNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "billing_month", nullable = false)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "billing_month", nullable = false, columnDefinition = "bill_month_enum")
     private BillMonth billingMonth;
 
     @Column(name = "billing_year", nullable = false)
@@ -112,6 +115,9 @@ public class Bill {
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_status", columnDefinition = "payment_status_enum")
     private PaymentStatus paymentStatus;
+
+    @Column(name = "bill_paid_date_time")
+    private LocalDateTime billPaidDateTime;
 
     @Column(name = "late_payment_surcharge", precision = 10, scale = 2)
     private BigDecimal latePaymentSurcharge;

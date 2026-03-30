@@ -1,6 +1,7 @@
 package com.reportsservice.enums;
 
 public enum BillMonth {
-    JAN, FEB, MAR, APR, MAY, JUN,
-    JUL, AUG, SEP, OCT, NOV, DEC
+    JANUARY, FEBRUARY, MARCH, APRIL,
+    MAY, JUNE, JULY, AUGUST, SEPTEMBER,
+    OCTOBER, NOVEMBER, DECEMBER
 }

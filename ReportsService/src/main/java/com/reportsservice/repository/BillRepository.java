@@ -32,27 +32,23 @@ public interface BillRepository extends JpaRepository<Bill, Long> {
                 SELECT b FROM Bill b
                 WHERE b.consumer.id = :consumerId
                 AND b.paymentStatus IN :statuses
-                AND NOT (b.billingMonth = :billingMonth AND b.billingYear = :billingYear)
                 AND b.deletedAt IS NULL
-                ORDER BY b.billingYear ASC, b.billingMonth ASC
+                ORDER BY b.billingYear DESC, b.billingMonth DESC
+                LIMIT 3
             """)
     List<Bill> findPendingBills(
             @Param("consumerId") Long consumerId,
-            @Param("statuses") List<PaymentStatus> statuses,
-            @Param("billingMonth") BillMonth billingMonth,
-            @Param("billingYear") Integer billingYear);
+            @Param("statuses") List<PaymentStatus> statuses);
 
     @Query("""
                 SELECT b FROM Bill b
                 WHERE b.consumer.id = :consumerId
                 AND b.paymentStatus = :status
-                AND NOT (b.billingMonth = :billingMonth AND b.billingYear = :billingYear)
                 AND b.deletedAt IS NULL
                 ORDER BY b.billingYear DESC, b.billingMonth DESC
+                LIMIT 3
             """)
     List<Bill> findPastPaidBills(
             @Param("consumerId") Long consumerId,
-            @Param("status") PaymentStatus status,
-            @Param("billingMonth") BillMonth billingMonth,
-            @Param("billingYear") Integer billingYear);
+            @Param("status") PaymentStatus status);
 }

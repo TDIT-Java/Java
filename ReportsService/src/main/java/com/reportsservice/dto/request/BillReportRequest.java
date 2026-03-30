@@ -16,8 +16,8 @@ public class BillReportRequest {
 
     @NotBlank(message = "Month is required")
     @Pattern(
-            regexp = "^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)$",
-            message = "Month must be valid (e.g., JAN, FEB, ...DEC)"
+            regexp = "^(JANUARY|FEBRUARY|MARCH|APRIL|MAY|JUNE|JULY|AUGUST|SEPTEMBER|OCTOBER|NOVEMBER|DECEMBER)$",
+            message = "Month must be valid (e.g., JANUARY, FEBRUARY, ...DECEMBER)"
     )
     private String month;
 

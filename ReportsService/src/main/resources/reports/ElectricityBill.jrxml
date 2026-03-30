@@ -10,7 +10,7 @@
         leftMargin="20" rightMargin="20"
         topMargin="20" bottomMargin="20">
 
-    <!-- ================= STYLES (must come before parameters) ================= -->
+    <!-- ================= STYLES ================= -->
     <style name="SectionHeader"
            forecolor="#FFFFFF"
            backcolor="#0F0FA3"
@@ -59,19 +59,19 @@
     <parameter name="pastUnits" class="java.util.List"/>
     <parameter name="pastAmounts" class="java.util.List"/>
 
+    <parameter name="billPaidDateTime" class="java.util.List"/>
+
     <parameter name="qrImage" class="java.io.InputStream"/>
 
     <!-- ================= TITLE BAND ================= -->
     <title>
         <band height="75" splitType="Stretch">
 
-            <!-- Logo -->
-            <image scaleImage="RetainShape" hAlign="Left" vAlign="Middle">
+            <image scaleImage="RetainShape" hAlign="Left" vAlign="Middle" onErrorType="Blank">
                 <reportElement x="0" y="5" width="65" height="60"/>
                 <imageExpression><![CDATA["logo.png"]]></imageExpression>
             </image>
 
-            <!-- Company Name -->
             <staticText>
                 <reportElement x="72" y="10" width="250" height="22" forecolor="#0F0FA3"/>
                 <textElement verticalAlignment="Middle">
@@ -80,7 +80,6 @@
                 <text><![CDATA[ELECTRICITY BOARD]]></text>
             </staticText>
 
-            <!-- Tagline -->
             <staticText>
                 <reportElement x="72" y="33" width="250" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
@@ -89,7 +88,6 @@
                 <text><![CDATA[Powering Your World, Every Day]]></text>
             </staticText>
 
-            <!-- Bill Title -->
             <staticText>
                 <reportElement x="350" y="15" width="200" height="24" forecolor="#0F0FA3"/>
                 <textElement textAlignment="Right" verticalAlignment="Middle">
@@ -98,7 +96,6 @@
                 <text><![CDATA[ELECTRICITY BILL]]></text>
             </staticText>
 
-            <!-- Divider Line -->
             <line>
                 <reportElement x="0" y="72" width="555" height="1" forecolor="#0F0FA3"/>
                 <graphicElement>
@@ -110,26 +107,53 @@
     </title>
 
     <!-- ================= DETAIL BAND ================= -->
+    <!--
+        LAYOUT MAP:
+        y=0   - 20  : Section 1 Header
+        y=20  - 115 : Consumer Details Box       (height=95)
+        y=115 - 122 : gap (7px)
+        y=122 - 142 : Section 2 Header           (height=20)
+        y=142 - 202 : Billing Summary Box        (height=60)
+        y=202 - 210 : gap (8px)
+        y=210 - 230 : Section 3 Header           (height=20)
+        y=230 - 250 : Pending Table Header       (height=20)
+        y=250 - 268 : Pending Row 1              (height=18)
+        y=268 - 286 : Pending Row 2              (height=18)
+        y=286 - 304 : Pending Row 3              (height=18)
+        y=304 - 312 : gap (8px)
+        y=312 - 392 : Payment Box + QR           (height=80)
+        y=392 - 400 : gap (8px)
+        y=400 - 420 : Section 5 Header           (height=20)
+        y=420 - 440 : Past Table Header          (height=20)
+        y=440 - 458 : Past Row 1                 (height=18)
+        y=458 - 476 : Past Row 2                 (height=18)
+        y=476 - 494 : Past Row 3                 (height=18)
+        y=494 - 502 : gap (8px)
+        y=502 - 544 : Notice Box                 (height=42)
+        y=544 - 552 : gap (8px)
+        y=552 - 553 : Footer divider line        (height=1)
+        y=554 - 654 : Advertisement image        (height=100)
+        y=654 - 670 : Footer text 1              (height=16)
+        y=670 - 682 : Footer text 2              (height=12)
+        Band height  = 685
+    -->
     <detail>
-        <band height="720" splitType="Stretch">
+        <band height="718" splitType="Stretch">
 
             <!-- ===== SECTION 1: Consumer Details ===== -->
-
-            <!-- Section Header Bar -->
             <rectangle radius="3">
                 <reportElement x="0" y="0" width="555" height="20"
                                backcolor="#0F0FA3" forecolor="#0F0FA3" mode="Opaque"/>
             </rectangle>
             <staticText>
-                <reportElement x="5" y="2" width="300" height="16"
-                               forecolor="#FFFFFF"/>
+                <reportElement x="5" y="2" width="300" height="16" forecolor="#FFFFFF"/>
                 <textElement verticalAlignment="Middle">
                     <font size="10" isBold="true" fontName="SansSerif"/>
                 </textElement>
                 <text><![CDATA[  Consumer Details]]></text>
             </staticText>
 
-            <!-- Consumer Box Border -->
+            <!-- Consumer Box -->
             <rectangle radius="2">
                 <reportElement x="0" y="20" width="555" height="95"
                                forecolor="#CCCCCC" backcolor="#FAFAFA" mode="Opaque"/>
@@ -138,7 +162,7 @@
                 </graphicElement>
             </rectangle>
 
-            <!-- LEFT COLUMN: Consumer Info -->
+            <!-- LEFT COLUMN -->
             <textField isBlankWhenNull="true">
                 <reportElement x="8" y="26" width="270" height="16" forecolor="#333333"/>
                 <textElement verticalAlignment="Middle">
@@ -187,7 +211,7 @@
                 </graphicElement>
             </line>
 
-            <!-- RIGHT COLUMN: Bill Info -->
+            <!-- RIGHT COLUMN -->
             <textField isBlankWhenNull="true">
                 <reportElement x="293" y="26" width="257" height="16" forecolor="#333333"/>
                 <textElement verticalAlignment="Middle">
@@ -229,15 +253,12 @@
             </textField>
 
             <!-- ===== SECTION 2: Billing Summary ===== -->
-
-            <!-- Section Header Bar -->
             <rectangle radius="3">
                 <reportElement x="0" y="122" width="555" height="20"
                                backcolor="#0F0FA3" forecolor="#0F0FA3" mode="Opaque"/>
             </rectangle>
             <staticText>
-                <reportElement x="5" y="124" width="300" height="16"
-                               forecolor="#FFFFFF"/>
+                <reportElement x="5" y="124" width="300" height="16" forecolor="#FFFFFF"/>
                 <textElement verticalAlignment="Middle">
                     <font size="10" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -255,7 +276,7 @@
 
             <!-- Left: Reading Info -->
             <textField isBlankWhenNull="true">
-                <reportElement x="8" y="148" width="250" height="16" forecolor="#333333"/>
+                <reportElement x="8" y="148" width="270" height="16" forecolor="#333333"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -264,7 +285,7 @@
             </textField>
 
             <textField isBlankWhenNull="true">
-                <reportElement x="8" y="165" width="250" height="16" forecolor="#333333"/>
+                <reportElement x="8" y="165" width="270" height="16" forecolor="#333333"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -273,7 +294,7 @@
             </textField>
 
             <textField isBlankWhenNull="true">
-                <reportElement x="8" y="182" width="250" height="16" forecolor="#333333"/>
+                <reportElement x="8" y="182" width="270" height="16" forecolor="#333333"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -299,15 +320,12 @@
             </textField>
 
             <!-- ===== SECTION 3: Pending Bills ===== -->
-
-            <!-- Section Header Bar -->
             <rectangle radius="3">
                 <reportElement x="0" y="210" width="555" height="20"
                                backcolor="#C0392B" forecolor="#C0392B" mode="Opaque"/>
             </rectangle>
             <staticText>
-                <reportElement x="5" y="212" width="300" height="16"
-                               forecolor="#FFFFFF"/>
+                <reportElement x="5" y="212" width="300" height="16" forecolor="#FFFFFF"/>
                 <textElement verticalAlignment="Middle">
                     <font size="10" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -315,34 +333,40 @@
             </staticText>
 
             <!-- Pending Table Header -->
+            <!--
+                Column Layout (total = 555px):
+                Month      : x=0,   width=120  (0   to 120)
+                Units      : x=120, width=120  (120 to 240)
+                Amount Due : x=240, width=315  (240 to 555)
+            -->
             <rectangle>
                 <reportElement x="0" y="230" width="555" height="20"
                                backcolor="#F2D7D5" forecolor="#F2D7D5" mode="Opaque"/>
             </rectangle>
 
             <staticText>
-                <reportElement x="5" y="232" width="180" height="16" forecolor="#333333"/>
+                <reportElement x="5" y="232" width="115" height="16" forecolor="#333333"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
                 <text><![CDATA[Month]]></text>
             </staticText>
             <staticText>
-                <reportElement x="190" y="232" width="120" height="16" forecolor="#333333"/>
+                <reportElement x="125" y="232" width="115" height="16" forecolor="#333333"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
                 <text><![CDATA[Units]]></text>
             </staticText>
             <staticText>
-                <reportElement x="315" y="232" width="235" height="16" forecolor="#333333"/>
+                <reportElement x="245" y="232" width="305" height="16" forecolor="#333333"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
                 <text><![CDATA[Amount Due]]></text>
             </staticText>
 
-            <!-- Pending Row 1 -->
+            <!-- Pending Row 1 (y=250, height=18, ends=268) -->
             <rectangle>
                 <reportElement x="0" y="250" width="555" height="18"
                                backcolor="#FFFFFF" forecolor="#DDDDDD" mode="Opaque"/>
@@ -351,7 +375,7 @@
                 </graphicElement>
             </rectangle>
             <textField isBlankWhenNull="true">
-                <reportElement x="5" y="252" width="180" height="14" forecolor="#555555"/>
+                <reportElement x="5" y="252" width="115" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -359,7 +383,7 @@
                     <![CDATA[$P{pendingMonths}.size()>0 ? $P{pendingMonths}.get(0) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="190" y="252" width="120" height="14" forecolor="#555555"/>
+                <reportElement x="125" y="252" width="115" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -367,7 +391,7 @@
                     <![CDATA[$P{pendingUnits}.size()>0 ? $P{pendingUnits}.get(0) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="315" y="252" width="235" height="14" forecolor="#C0392B"/>
+                <reportElement x="245" y="252" width="305" height="14" forecolor="#C0392B"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -375,7 +399,7 @@
                     <![CDATA[$P{pendingAmounts}.size()>0 ? "\u20B9 " + $P{pendingAmounts}.get(0) : "-"]]></textFieldExpression>
             </textField>
 
-            <!-- Pending Row 2 -->
+            <!-- Pending Row 2 (y=268, height=18, ends=286) -->
             <rectangle>
                 <reportElement x="0" y="268" width="555" height="18"
                                backcolor="#FEF9F9" forecolor="#DDDDDD" mode="Opaque"/>
@@ -384,7 +408,7 @@
                 </graphicElement>
             </rectangle>
             <textField isBlankWhenNull="true">
-                <reportElement x="5" y="270" width="180" height="14" forecolor="#555555"/>
+                <reportElement x="5" y="270" width="115" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -392,7 +416,7 @@
                     <![CDATA[$P{pendingMonths}.size()>1 ? $P{pendingMonths}.get(1) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="190" y="270" width="120" height="14" forecolor="#555555"/>
+                <reportElement x="125" y="270" width="115" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -400,7 +424,7 @@
                     <![CDATA[$P{pendingUnits}.size()>1 ? $P{pendingUnits}.get(1) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="315" y="270" width="235" height="14" forecolor="#C0392B"/>
+                <reportElement x="245" y="270" width="305" height="14" forecolor="#C0392B"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -408,11 +432,43 @@
                     <![CDATA[$P{pendingAmounts}.size()>1 ? "\u20B9 " + $P{pendingAmounts}.get(1) : "-"]]></textFieldExpression>
             </textField>
 
-            <!-- ===== SECTION 4: Total Amount Box + QR Code ===== -->
+            <!-- Pending Row 3 (y=286, height=18, ends=304) -->
+            <rectangle>
+                <reportElement x="0" y="286" width="555" height="18"
+                               backcolor="#FFFFFF" forecolor="#DDDDDD" mode="Opaque"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </rectangle>
+            <textField isBlankWhenNull="true">
+                <reportElement x="5" y="288" width="115" height="14" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$P{pendingMonths}.size()>2 ? $P{pendingMonths}.get(2) : "-"]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="125" y="288" width="115" height="14" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$P{pendingUnits}.size()>2 ? $P{pendingUnits}.get(2) : "-"]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="245" y="288" width="305" height="14" forecolor="#C0392B"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" isBold="true" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$P{pendingAmounts}.size()>2 ? "\u20B9 " + $P{pendingAmounts}.get(2) : "-"]]></textFieldExpression>
+            </textField>
 
-            <!-- Total Amount Box -->
+            <!-- ===== SECTION 4: Payment Details + QR Code ===== -->
+            <!-- Payment box: y=312, height=80, ends=392 -->
             <rectangle radius="4">
-                <reportElement x="0" y="295" width="420" height="80"
+                <reportElement x="0" y="312" width="415" height="80"
                                backcolor="#EBF5FB" forecolor="#1A5276" mode="Opaque"/>
                 <graphicElement>
                     <pen lineWidth="1.5" lineColor="#1A5276"/>
@@ -420,7 +476,7 @@
             </rectangle>
 
             <staticText>
-                <reportElement x="8" y="300" width="400" height="16" forecolor="#1A5276"/>
+                <reportElement x="8" y="316" width="400" height="16" forecolor="#1A5276"/>
                 <textElement verticalAlignment="Middle">
                     <font size="10" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -428,11 +484,11 @@
             </staticText>
 
             <line>
-                <reportElement x="8" y="317" width="404" height="1" forecolor="#1A5276"/>
+                <reportElement x="8" y="333" width="399" height="1" forecolor="#1A5276"/>
             </line>
 
             <textField isBlankWhenNull="true">
-                <reportElement x="8" y="320" width="400" height="16" forecolor="#1A5276"/>
+                <reportElement x="8" y="335" width="400" height="16" forecolor="#1A5276"/>
                 <textElement verticalAlignment="Middle">
                     <font size="10" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -441,7 +497,7 @@
             </textField>
 
             <textField isBlankWhenNull="true">
-                <reportElement x="8" y="338" width="400" height="16" forecolor="#555555"/>
+                <reportElement x="8" y="353" width="400" height="16" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -449,7 +505,7 @@
             </textField>
 
             <textField isBlankWhenNull="true">
-                <reportElement x="8" y="355" width="400" height="16" forecolor="#C0392B"/>
+                <reportElement x="8" y="370" width="400" height="18" forecolor="#C0392B"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -457,22 +513,23 @@
                     <![CDATA["After Due Date:   \u20B9 " + $P{afterDueAmount} + "  (incl. \u20B9 10 late charges)"]]></textFieldExpression>
             </textField>
 
-            <!-- QR Code Box -->
+            <!-- QR Code Box: x=420, width=135, total=555 ✓ -->
             <rectangle radius="4">
-                <reportElement x="425" y="295" width="130" height="80"
+                <reportElement x="420" y="312" width="135" height="80"
                                backcolor="#F8F9FA" forecolor="#CCCCCC" mode="Opaque"/>
                 <graphicElement>
                     <pen lineWidth="0.75"/>
                 </graphicElement>
             </rectangle>
 
+            <!-- QR image: x=432, width=72, ends=504 ✓ centered in box -->
             <image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
-                <reportElement x="455" y="298" width="70" height="65"/>
+                <reportElement x="432" y="315" width="72" height="55"/>
                 <imageExpression><![CDATA[$P{qrImage}]]></imageExpression>
             </image>
 
             <staticText>
-                <reportElement x="425" y="358" width="130" height="14" forecolor="#0F0FA3"/>
+                <reportElement x="400" y="371" width="135" height="16" forecolor="#0F0FA3"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="8" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -480,14 +537,13 @@
             </staticText>
 
             <!-- ===== SECTION 5: Past 3 Months ===== -->
-
-            <!-- Section Header Bar -->
+            <!-- Section header: y=400, height=20, ends=420 -->
             <rectangle radius="3">
-                <reportElement x="0" y="385" width="555" height="20"
+                <reportElement x="0" y="400" width="555" height="20"
                                backcolor="#1E8449" forecolor="#1E8449" mode="Opaque"/>
             </rectangle>
             <staticText>
-                <reportElement x="5" y="387" width="400" height="16" forecolor="#FFFFFF"/>
+                <reportElement x="5" y="402" width="500" height="16" forecolor="#FFFFFF"/>
                 <textElement verticalAlignment="Middle">
                     <font size="10" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -495,50 +551,57 @@
             </staticText>
 
             <!-- Past Table Header -->
+            <!--
+                Column Layout (total = 555px):
+                Bill Month       : x=0,   width=130  (0   to 130)
+                Units Consumed   : x=130, width=110  (130 to 240)
+                Bill Paid Amount : x=240, width=110  (240 to 350)
+                Bill Paid D&T    : x=350, width=205  (350 to 555)
+            -->
             <rectangle>
-                <reportElement x="0" y="405" width="555" height="20"
+                <reportElement x="0" y="420" width="555" height="20"
                                backcolor="#D5F5E3" forecolor="#D5F5E3" mode="Opaque"/>
             </rectangle>
 
             <staticText>
-                <reportElement x="5" y="407" width="134" height="16" forecolor="#1E8449"/>
+                <reportElement x="5" y="422" width="125" height="16" forecolor="#1E8449"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
                 <text><![CDATA[Bill Month]]></text>
             </staticText>
             <staticText>
-                <reportElement x="190" y="407" width="134" height="16" forecolor="#1E8449"/>
+                <reportElement x="135" y="422" width="105" height="16" forecolor="#1E8449"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
                 <text><![CDATA[Units Consumed]]></text>
             </staticText>
             <staticText>
-                <reportElement x="315" y="407" width="134" height="16" forecolor="#1E8449"/>
+                <reportElement x="245" y="422" width="105" height="16" forecolor="#1E8449"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
                 <text><![CDATA[Bill Paid Amount]]></text>
             </staticText>
             <staticText>
-                <reportElement x="540" y="407" width="180" height="16" forecolor="#1E8449"/>
+                <reportElement x="355" y="422" width="195" height="16" forecolor="#1E8449"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
-                <text><![CDATA[Bill Month]]></text>
+                <text><![CDATA[Bill Paid Date & Time]]></text>
             </staticText>
 
-            <!-- Past Row 1 -->
+            <!-- Past Row 1 (y=440, height=18, ends=458) -->
             <rectangle>
-                <reportElement x="0" y="425" width="555" height="18"
+                <reportElement x="0" y="440" width="555" height="18"
                                backcolor="#FFFFFF" forecolor="#DDDDDD" mode="Opaque"/>
                 <graphicElement>
                     <pen lineWidth="0.5"/>
                 </graphicElement>
             </rectangle>
             <textField isBlankWhenNull="true">
-                <reportElement x="5" y="427" width="180" height="14" forecolor="#555555"/>
+                <reportElement x="5" y="442" width="125" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -546,7 +609,7 @@
                     <![CDATA[$P{pastMonths}.size()>0 ? $P{pastMonths}.get(0) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="190" y="427" width="120" height="14" forecolor="#555555"/>
+                <reportElement x="135" y="442" width="105" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -554,24 +617,32 @@
                     <![CDATA[$P{pastUnits}.size()>0 ? $P{pastUnits}.get(0) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="315" y="427" width="235" height="14" forecolor="#1E8449"/>
+                <reportElement x="245" y="442" width="105" height="14" forecolor="#1E8449"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
                 <textFieldExpression>
                     <![CDATA[$P{pastAmounts}.size()>0 ? "\u20B9 " + $P{pastAmounts}.get(0) : "-"]]></textFieldExpression>
             </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="355" y="442" width="195" height="14" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$P{billPaidDateTime} != null && $P{billPaidDateTime}.size()>0 ? String.valueOf($P{billPaidDateTime}.get(0)) : "-"]]></textFieldExpression>
+            </textField>
 
-            <!-- Past Row 2 -->
+            <!-- Past Row 2 (y=458, height=18, ends=476) -->
             <rectangle>
-                <reportElement x="0" y="443" width="555" height="18"
+                <reportElement x="0" y="458" width="555" height="18"
                                backcolor="#F0FBF4" forecolor="#DDDDDD" mode="Opaque"/>
                 <graphicElement>
                     <pen lineWidth="0.5"/>
                 </graphicElement>
             </rectangle>
             <textField isBlankWhenNull="true">
-                <reportElement x="5" y="445" width="180" height="14" forecolor="#555555"/>
+                <reportElement x="5" y="460" width="125" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -579,7 +650,7 @@
                     <![CDATA[$P{pastMonths}.size()>1 ? $P{pastMonths}.get(1) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="190" y="445" width="120" height="14" forecolor="#555555"/>
+                <reportElement x="135" y="460" width="105" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -587,24 +658,32 @@
                     <![CDATA[$P{pastUnits}.size()>1 ? $P{pastUnits}.get(1) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="315" y="445" width="235" height="14" forecolor="#1E8449"/>
+                <reportElement x="245" y="460" width="105" height="14" forecolor="#1E8449"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
                 <textFieldExpression>
                     <![CDATA[$P{pastAmounts}.size()>1 ? "\u20B9 " + $P{pastAmounts}.get(1) : "-"]]></textFieldExpression>
             </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="355" y="460" width="195" height="14" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$P{billPaidDateTime} != null && $P{billPaidDateTime}.size()>1 ? String.valueOf($P{billPaidDateTime}.get(1)) : "-"]]></textFieldExpression>
+            </textField>
 
-            <!-- Past Row 3 -->
+            <!-- Past Row 3 (y=476, height=18, ends=494) -->
             <rectangle>
-                <reportElement x="0" y="461" width="555" height="18"
+                <reportElement x="0" y="476" width="555" height="18"
                                backcolor="#FFFFFF" forecolor="#DDDDDD" mode="Opaque"/>
                 <graphicElement>
                     <pen lineWidth="0.5"/>
                 </graphicElement>
             </rectangle>
             <textField isBlankWhenNull="true">
-                <reportElement x="5" y="463" width="180" height="14" forecolor="#555555"/>
+                <reportElement x="5" y="478" width="125" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -612,7 +691,7 @@
                     <![CDATA[$P{pastMonths}.size()>2 ? $P{pastMonths}.get(2) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="190" y="463" width="120" height="14" forecolor="#555555"/>
+                <reportElement x="135" y="478" width="105" height="14" forecolor="#555555"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
@@ -620,17 +699,26 @@
                     <![CDATA[$P{pastUnits}.size()>2 ? $P{pastUnits}.get(2) : "-"]]></textFieldExpression>
             </textField>
             <textField isBlankWhenNull="true">
-                <reportElement x="315" y="463" width="235" height="14" forecolor="#1E8449"/>
+                <reportElement x="245" y="478" width="105" height="14" forecolor="#1E8449"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" fontName="SansSerif"/>
                 </textElement>
                 <textFieldExpression>
                     <![CDATA[$P{pastAmounts}.size()>2 ? "\u20B9 " + $P{pastAmounts}.get(2) : "-"]]></textFieldExpression>
             </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="355" y="478" width="195" height="14" forecolor="#555555"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="9" fontName="SansSerif"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$P{billPaidDateTime} != null && $P{billPaidDateTime}.size()>2 ? String.valueOf($P{billPaidDateTime}.get(2)) : "-"]]></textFieldExpression>
+            </textField>
 
             <!-- ===== IMPORTANT NOTICE BOX ===== -->
+            <!-- y=502, height=42, ends=544 -->
             <rectangle radius="4">
-                <reportElement x="0" y="490" width="555" height="45"
+                <reportElement x="0" y="502" width="555" height="42"
                                backcolor="#FEF9E7" forecolor="#F39C12" mode="Opaque"/>
                 <graphicElement>
                     <pen lineWidth="1.0" lineColor="#F39C12"/>
@@ -638,7 +726,7 @@
             </rectangle>
 
             <staticText>
-                <reportElement x="8" y="494" width="540" height="14" forecolor="#7D6608"/>
+                <reportElement x="8" y="505" width="540" height="14" forecolor="#7D6608"/>
                 <textElement verticalAlignment="Middle">
                     <font size="9" isBold="true" fontName="SansSerif"/>
                 </textElement>
@@ -651,37 +739,41 @@
                     <font size="8" fontName="SansSerif"/>
                 </textElement>
                 <text>
-                    <![CDATA[Please pay your bill before the due date to avoid late charges. For queries call 1800-123-4567 (Toll Free).]]></text>
+                    <![CDATA[Please pay your bill before the due date to avoid late charges. For queries call 1800-XXX-XXXX (Toll Free).]]></text>
             </staticText>
 
-            <!-- ===== FOOTER ===== -->
+            <!-- ===== FOOTER DIVIDER LINE ===== -->
             <line>
-                <reportElement x="0" y="543" width="555" height="1" forecolor="#0F0FA3"/>
+                <reportElement x="0" y="552" width="555" height="1" forecolor="#0F0FA3"/>
                 <graphicElement>
                     <pen lineWidth="1.0"/>
                 </graphicElement>
             </line>
 
-            <!-- Advertisement  -->
-            <image scaleImage="RetainShape" hAlign="Left" vAlign="Middle">
-                <reportElement x="0" y="547" width="555" height="100"/>
-                <imageExpression><![CDATA["advertisement.png"]]></imageExpression>
+            <!-- ===== ADVERTISEMENT IMAGE ===== -->
+            <!-- y=554, width=555, height=130, ends=684 -->
+            <image scaleImage="FillFrame" hAlign="Center" vAlign="Middle" onErrorType="Blank">
+                <reportElement x="0" y="554" width="555" height="130"/>
+                <imageExpression><![CDATA["advertisement.jpg"]]></imageExpression>
             </image>
 
+            <!-- ===== FOOTER TEXTS ===== -->
+            <!-- y=686, height=16, ends=702 -->
             <staticText>
-                <reportElement x="0" y="560" width="555" height="16" forecolor="#888888"/>
+                <reportElement x="0" y="686" width="555" height="16" forecolor="#888888"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="8" isItalic="true" fontName="SansSerif"/>
                 </textElement>
                 <text><![CDATA[This is a computer-generated bill and does not require a physical signature.]]></text>
             </staticText>
 
+            <!-- y=703, height=11, ends=714 -->
             <staticText>
-                <reportElement x="0" y="563" width="555" height="14" forecolor="#AAAAAA"/>
+                <reportElement x="0" y="703" width="555" height="11" forecolor="#AAAAAA"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="7" fontName="SansSerif"/>
                 </textElement>
-                <text><![CDATA[© Electricity Board | www.electricityboard.gov.in | Helpline: 1800-123-4567]]></text>
+                <text><![CDATA[© Electricity Board | www.electricityboard.gov.in | Helpline: 1800-XXX-XXXX]]></text>
             </staticText>
 
         </band>

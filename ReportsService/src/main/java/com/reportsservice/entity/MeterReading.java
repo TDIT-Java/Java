@@ -5,6 +5,8 @@ import com.reportsservice.enums.ReadingSource;
 import com.reportsservice.enums.ReadingType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -35,7 +37,8 @@ public class MeterReading {
     private LocalDate readingDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "for_reading_month", nullable = false)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "for_reading_month", nullable = false, columnDefinition = "bill_month_enum")
     private BillMonth forReadingMonth;
 
     @Column(name = "for_reading_year", nullable = false)
