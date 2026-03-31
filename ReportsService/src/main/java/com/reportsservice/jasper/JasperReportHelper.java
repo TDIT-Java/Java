@@ -26,7 +26,8 @@ public class JasperReportHelper {
     public byte[] generateBillPdf(
             Map<String, Object> fields,
             List<PendingBillRow> pendingBills,
-            List<PastBillRow> paidBills) {
+            List<PastBillRow> paidBills,
+            String billType) {
 
         try {
             ClassPathResource resource = new ClassPathResource(REPORT_PATH);
@@ -91,6 +92,7 @@ public class JasperReportHelper {
             parameters.put("pastUnits", paidUnits);
             parameters.put("pastAmounts", paidAmounts);
             parameters.put("billPaidDateTime", billPaidDateTimes);
+            parameters.put("billType", billType);
 
             // FILL REPORT
             JasperPrint jasperPrint = JasperFillManager.fillReport(
@@ -98,7 +100,7 @@ public class JasperReportHelper {
                     parameters,
                     new JREmptyDataSource(1));
 
-            String outputPath = "output/" + fields.get("customerId") + ".pdf";
+            String outputPath = "output/"+ billType + "/" + fields.get("customerId") + ".pdf";
 
             java.io.File outputDir = new java.io.File("output");
             if (!outputDir.exists()) {

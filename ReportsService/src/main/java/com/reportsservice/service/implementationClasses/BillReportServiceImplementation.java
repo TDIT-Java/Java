@@ -1,4 +1,4 @@
-package com.reportsservice.service.impl;
+package com.reportsservice.service.implementationClasses;
 
 import com.reportsservice.dto.request.BillReportRequest;
 import com.reportsservice.dto.response.*;
@@ -9,6 +9,7 @@ import com.reportsservice.exceptions.*;
 import com.reportsservice.jasper.JasperReportHelper;
 import com.reportsservice.repository.*;
 import com.reportsservice.service.BillReportService;
+import com.reportsservice.utils.MaskingUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ import java.util.*;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class BillReportServiceImpl implements BillReportService {
+public class BillReportServiceImplementation implements BillReportService {
 
     private final ConsumerRepository consumerRepository;
     private final BillRepository billRepository;
@@ -32,22 +33,22 @@ public class BillReportServiceImpl implements BillReportService {
     @Transactional(readOnly = true)
     public BillReportResponse generateBillReport(BillReportRequest request) {
 
-        log.info("Generating bill report → ConsumerID: {}, Month: {}, Year: {}",
-                request.getId(), request.getMonth(), request.getYear());
+        log.info("Generating bill report → Consumer Number: {}, Month: {}, Year: {}",
+                request.getConsumerNo(), request.getMonth(), request.getYear());
 
         // Convert String month to BillMonth enum
         BillMonth billMonth = BillMonth.valueOf(request.getMonth().toUpperCase());
 
         // 1. Fetch Consumer
         Consumer consumer = consumerRepository
-                .findActiveConsumerById(request.getId())
-                .orElseThrow(() -> new ConsumerNotFoundException(request.getId()));
+                .findActiveConsumerByConsumerNumber(request.getConsumerNo())
+                .orElseThrow(() -> new ConsumerNotFoundException(request.getConsumerNo()));
 
         // 2. Fetch Current Bill
         Bill currentBill = billRepository
                 .findBill(consumer.getId(), billMonth, request.getYear())
                 .orElseThrow(() -> new BillNotFoundException(
-                        consumer.getId(), request.getMonth(), request.getYear()));
+                        request.getConsumerNo(), request.getMonth(), request.getYear()));
 
         // 3. Ensure MeterReading is loaded
         MeterReading reading = currentBill.getMeterReading();
@@ -59,25 +60,29 @@ public class BillReportServiceImpl implements BillReportService {
         }
 
         // 4. Fetch Pending Bills
-        List<Bill> pendingBills = billRepository.findPendingBills(
-                consumer.getId(),
-                List.of(PaymentStatus.PENDING, PaymentStatus.PARTIALLY_PAID, PaymentStatus.OVERDUE));
+        List<Bill> pendingBills = new ArrayList<>();
+        List<Bill> paidBills = new ArrayList<>();
+        if (Objects.equals(request.getBillType(), "ORIGINAL")) {
+            pendingBills = billRepository.findPendingBills(
+                    consumer.getId(),
+                    List.of(PaymentStatus.PENDING, PaymentStatus.PARTIALLY_PAID, PaymentStatus.OVERDUE));
 
-        // 5. Fetch Past Paid Bills
-        List<Bill> paidBills = billRepository.findPastPaidBills(
-                consumer.getId(),
-                PaymentStatus.PAID
-        );
+            // 5. Fetch Past Paid Bills
+            paidBills = billRepository.findPastPaidBills(
+                    consumer.getId(),
+                    PaymentStatus.PAID
+            );
+        }
 
         // 6. Build Jasper Fields
-        Map<String, Object> fields = buildFieldsMap(consumer, currentBill, reading);
+        Map<String, Object> fields = buildFieldsMap(consumer, currentBill, reading, request.getBillType());
 
         // 7. Build Table Rows
         List<PendingBillRow> pendingRows = buildPendingRows(pendingBills);
         List<PastBillRow> paidRows = buildPastRows(paidBills);
 
         // 8. Generate PDF
-        byte[] pdfBytes = jasperReportHelper.generateBillPdf(fields, pendingRows, paidRows);
+        byte[] pdfBytes = jasperReportHelper.generateBillPdf(fields, pendingRows, paidRows, request.getBillType());
 
         String fileName = "BILL_" + consumer.getConsumerNo() + "_"
                 + billMonth.name() + "_" + request.getYear() + ".pdf";
@@ -94,7 +99,7 @@ public class BillReportServiceImpl implements BillReportService {
 
     // PRIVATE HELPERS
 
-    private Map<String, Object> buildFieldsMap(Consumer consumer, Bill bill, MeterReading reading) {
+    private Map<String, Object> buildFieldsMap(Consumer consumer, Bill bill, MeterReading reading, String billType) {
 
         Address address = consumer.getAddress();
         City city = address.getCity();
@@ -128,12 +133,18 @@ public class BillReportServiceImpl implements BillReportService {
         fields.put("customerName", buildFullName(consumer));
         fields.put("customerId", consumer.getConsumerNo());
         fields.put("billingAddress", buildFullAddress(address, city));
-        fields.put("emailId", consumer.getEmail().getEmail());
-        fields.put("phoneNumber", consumer.getPhoneNumber().getPrimaryMobile());
 
         fields.put("billNumber", bill.getBillNumber());
         fields.put("billDate", bill.getBillDate().toString());
         fields.put("dueDate", bill.getDueDate().toString());
+
+        String email = consumer.getEmail().getEmail();
+        String phoneNumber = consumer.getPhoneNumber().getPrimaryMobile();
+
+        Boolean isDuplicate = billType.equals("DUPLICATE");
+
+        fields.put("emailId", isDuplicate ? MaskingUtil.maskEmail(email) : email);
+        fields.put("phoneNumber", isDuplicate ? MaskingUtil.maskPhone(phoneNumber) : phoneNumber);
 
         // Use Reading Date if available
         String readingDateStr = "N/A";

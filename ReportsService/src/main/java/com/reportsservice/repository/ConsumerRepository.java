@@ -19,8 +19,8 @@ public interface ConsumerRepository extends JpaRepository<Consumer, Long> {
                 LEFT JOIN FETCH a.city ct
                 LEFT JOIN FETCH ct.district
                 LEFT JOIN FETCH ct.pincode
-                WHERE c.id = :id
+                WHERE c.consumerNo = :consumerNo
                 AND c.deletedAt IS NULL
             """)
-    Optional<Consumer> findActiveConsumerById(@Param("id") Long id);
+    Optional<Consumer> findActiveConsumerByConsumerNumber(@Param("consumerNo") Long consumerNo);
 }

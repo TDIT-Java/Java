@@ -39,14 +39,18 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ReportGenerationException.class)
     public ResponseEntity<Map<String, Object>> handleReportGeneration(
             ReportGenerationException ex) {
-        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR,
-                ex.getMessage(), null);
+        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), null);
+    }
+
+    @ExceptionHandler(RequestDataValidationException.class)
+    public ResponseEntity<Map<String, Object>> handleRequestDataValidation(
+            RequestDataValidationException ex) {
+        return buildResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), null);
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGeneric(Exception ex) {
-        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR,
-                "Unexpected error: " + ex.getMessage(), null);
+        return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected error: " + ex.getMessage(), null);
     }
 
     private ResponseEntity<Map<String, Object>> buildResponse(

@@ -3,6 +3,7 @@ package com.reportsservice.controller;
 import com.reportsservice.dto.request.BillReportRequest;
 import com.reportsservice.dto.response.BillReportResponse;
 import com.reportsservice.service.BillReportService;
+import com.reportsservice.validations.BillReportValidations;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.*;
 public class BillReportController {
 
     private final BillReportService billReportService;
+    private final BillReportValidations billReportValidations;
 
-    @PostMapping("/generate")
+    @GetMapping("/generateCurrentBill")
     public ResponseEntity<byte[]> generateBillReport(
-            @Valid @RequestBody BillReportRequest request) {
+            @Valid @ModelAttribute BillReportRequest request) {
+
+        billReportValidations.validateUrlData(request);
 
         log.info("Bill generation request → {}", request);
 
