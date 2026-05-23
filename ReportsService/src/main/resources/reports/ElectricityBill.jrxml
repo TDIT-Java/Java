@@ -535,14 +535,14 @@
                 </graphicElement>
             </rectangle>
 
-            <!-- QR image: x=432, width=72, ends=504 ✓ centered in box -->
-            <image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
-                <reportElement x="432" y="315" width="72" height="55"/>
+            <!-- QR image: x=432, y=315, width=77, height=70 ✓ centered in box -->
+            <image scaleImage="RetainShape">
+                <reportElement x="432" y="315" width="77" height="70" />
                 <imageExpression><![CDATA[$P{qrImage}]]></imageExpression>
             </image>
 
             <staticText>
-                <reportElement x="400" y="371" width="135" height="16" forecolor="#0F0FA3"/>
+                <reportElement x="400" y="375" width="135" height="16" forecolor="#0F0FA3"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="8" isBold="true" fontName="SansSerif"/>
                 </textElement>

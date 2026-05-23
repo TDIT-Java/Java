@@ -1,7 +1,5 @@
 package Pradeep.StringClass;
 
-import jdk.nashorn.internal.ir.BinaryNode;
-
 public class StringClassMethods {
     public static void main(String[] args) {
         String str1 = "Hello";

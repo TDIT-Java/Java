@@ -15,6 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -174,7 +177,10 @@ public class BillReportServiceImplementation implements BillReportService {
         fields.put("ratePerUnit", ratePerUnit);
         fields.put("totalAmountPay", bill.getNetAmount().doubleValue());
         fields.put("afterDueAmount", afterDueAmount);
-        fields.put("qrData", buildQrData(consumer, bill));
+
+        String qrData = buildQrData(consumer, bill);
+
+        fields.put("qrData", qrData);
 
         return fields;
     }
@@ -233,11 +239,32 @@ public class BillReportServiceImplementation implements BillReportService {
     }
 
     private String buildQrData(Consumer consumer, Bill bill) {
-        return "ConsumerNo:" + consumer.getConsumerNo()
-                + "|BillNo:" + bill.getBillNumber()
-                + "|Month:" + bill.getBillingMonth().name()
-                + "|Year:" + bill.getBillingYear()
-                + "|Amount:" + bill.getNetAmount()
-                + "|DueDate:" + bill.getDueDate();
+
+        try {
+            String baseUrl = "https://api.example.com/payment/pay";
+
+            // Encode values safely
+            String consumerName = URLEncoder.encode(
+                    buildFullName(consumer), StandardCharsets.UTF_8);
+            String billNumber = URLEncoder.encode(
+                    bill.getBillNumber(), StandardCharsets.UTF_8);
+
+            String qrUrl = baseUrl
+                    + "?consumerNo=" + consumer.getConsumerNo()
+                    + "&amount=" + bill.getNetAmount().toPlainString()
+                    + "&billNumber=" + billNumber
+                    + "&consumerName=" + consumerName
+                    + "&billMonth=" + bill.getBillingMonth().name()
+                    + "&billYear=" + bill.getBillingYear();
+
+            log.info("QR URL: {}", qrUrl);
+            return qrUrl;
+
+        } catch (Exception ex) {
+            log.error("Failed to build QR URL: {}", ex.getMessage());
+            // Fallback — plain string
+            return "CONSUMER:" + consumer.getConsumerNo()
+                    + "|BILL:" + bill.getBillNumber();
+        }
     }
 }

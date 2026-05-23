@@ -1,0 +1,75 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: BatchProcessing
+
+  # PostgreSQL DataSource Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/batch_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      pool-name: BatchHikariPool
+
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    open-in-view: false
+
+  # Spring Batch Configuration
+  batch:
+    job:
+      enabled: false  # Disable auto-start on application startup
+    jdbc:
+      initialize-schema: always  # Creates batch meta-tables automatically
+
+# Logging Configuration
+logging:
+  level:
+    com.company.batch: DEBUG
+    org.springframework.batch: INFO
+    org.hibernate.SQL: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+# SpringDoc OpenAPI (Swagger) Configuration
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, batch
+  endpoint:
+    health:
+      show-details: always
+
+# Custom Batch Properties
+batch:
+  chunk-size: 100
+  max-threads: 5
+  retry-limit: 3
+  skip-limit: 10

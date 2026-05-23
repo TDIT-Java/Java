@@ -69,17 +69,21 @@ public class JasperReportHelper {
             // QR SAFE
             String qrText = (String) fields.get("qrData");
 
-            InputStream qrImage = null;
             if (qrText != null && !qrText.isBlank()) {
-                ByteArrayOutputStream qrOutputStream = QRCode
-                        .from(qrText)
-                        .withSize(120, 120)
-                        .stream();
 
-                qrImage = new ByteArrayInputStream(qrOutputStream.toByteArray());
+                // Generate QR code bytes first
+                byte[] qrBytes = QRCode.from(qrText).stream().toByteArray();
+
+                // Create InputStream WITHOUT try-with-resources
+                // JasperReports will read this stream internally during fillReport()
+                InputStream qrImageStream = new ByteArrayInputStream(qrBytes);
+
+                fields.put("qrImage", qrImageStream);
+
+            } else {
+                // Put null — handle null safely in JRXML
+                fields.put("qrImage", null);
             }
-
-            fields.put("qrImage", qrImage);
 
             // PARAMETERS MAP
             Map<String, Object> parameters = new HashMap<>(fields);
@@ -100,7 +104,7 @@ public class JasperReportHelper {
                     parameters,
                     new JREmptyDataSource(1));
 
-            String outputPath = "output/"+ billType + "/" + fields.get("customerId") + ".pdf";
+            String outputPath = "output/" + billType + "/" + fields.get("customerId") + ".pdf";
 
             java.io.File outputDir = new java.io.File("output");
             if (!outputDir.exists()) {
